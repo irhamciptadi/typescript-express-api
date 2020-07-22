@@ -1,1 +1,1 @@
-# tyoescript-express-api
+# typescript-express-api
