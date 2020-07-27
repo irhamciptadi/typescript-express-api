@@ -7,6 +7,7 @@ import cors from "cors";
 import { config as dotenv } from "dotenv";
 
 // Routers
+import AuthRoutes from "./routers/AuthRoutes";
 import UsersRoutes from "./routers/UsersRoutes";
 
 class App {
@@ -32,14 +33,13 @@ class App {
             res.send("this route ts")
         });
         
-        this.app.use("/users", UsersRoutes);
+        this.app.use("/api/v1/users", UsersRoutes);
+        this.app.use("/api/v1/auth", AuthRoutes)
     }
 }
 
 const port: number = 8000;
 const app = new App().app;
 app.listen(port, () => {
-    console.log("Apps running in port: " + port);
-    console.log(process.env.DBHOST);
-    
+    console.log(`Apps running in: ${process.env.DB_HOST}:${port}`);
 });
